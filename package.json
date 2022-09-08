@@ -1,0 +1,21 @@
+{
+  "name": "science-blog",
+  "version": "1.0.0",
+  "description": "this is my blog",
+  "main": "index.js",
+  "repository": "git@github.com:Raissadev/Science-Blog.git",
+  "author": "Raissadev <raissa.fullstack@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start:backend": "yarn --cwd ./Backend start",
+    "start:frontend": "yarn --cwd ./Frontend start",
+    "start": "concurrently -k \"yarn start:backend\"",
+
+    "prebuild": "yarn --cwd ./Backend install && yarn --cwd ./Backend tools && yarn --cwd ./Frontend install && yarn --cwd ./Frontend compiler && yarn install",
+    "dev": "yarn prebuild && concurrently -k \"yarn --cwd ./Backend dev\" \"yarn --cwd ./Frontend dev\"",
+    "build": "sh build.sh"
+  },
+  "dependencies": {
+    "concurrently": "^7.2.2"
+  }
+}

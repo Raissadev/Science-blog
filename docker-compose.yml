@@ -1,0 +1,21 @@
+version: '1.0.0'
+
+services:
+  db:
+    image: "postgres:14"
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./Backend/.env
+
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: on-failure
+    volumes:
+      - ./:/app
+    env_file:
+      - ./Backend/.env
+      - ./Frontend/.env
