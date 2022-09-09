@@ -7,7 +7,9 @@
         "moduleResolution": "node"
     },
     "include": [
-        "app/**/*"
+        "app/**/*",
+        "config/**/*",
+        "database/**/*"
     ],
     "exclude": [
         "node_modules"

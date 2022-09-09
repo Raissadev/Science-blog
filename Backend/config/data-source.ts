@@ -12,9 +12,7 @@ export const ds = new DataSource({
     logging: false,
     entities: ["app/models/**/*.ts"],
     migrations: ["database/migrations/**/*.ts", "database/seeders/**/*.ts"],
-    ssl: {
-        rejectUnauthorized: false,
-    },
+    ssl: false
 });
 
 ds.initialize();
