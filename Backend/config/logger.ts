@@ -29,7 +29,7 @@ const defaultLog = winston.createLogger({
     }),
     transports: [
         new DailyRotateFile({
-            filename: `HURRA_BACKEND-%DATE%.log`,
+            filename: `Blog-%DATE%.log`,
             format: winston.format.combine(winston.format.json(), defaultFormat),
             dirname: log_path,
             datePattern: "YYYY-MM-DD",
@@ -44,7 +44,7 @@ const defaultLog = winston.createLogger({
 const expressLog = {
     transports: [
         new winston.transports.DailyRotateFile({
-            filename: `HURRA_BACKEND-%DATE%.log`,
+            filename: `Blog-%DATE%.log`,
             format: winston.format.combine(winston.format.json(), defaultFormat),
             dirname: log_path,
             datePattern: "YYYY-MM-DD",
