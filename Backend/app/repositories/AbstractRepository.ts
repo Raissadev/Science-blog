@@ -1,12 +1,14 @@
-import { ds } from "../../config/data-source";
-
 abstract class AbstractRepository
 {
     abstract rp: any;
+    abstract take: number;
 
-    public all(): Array<number>
+    public async all(page: any): Promise<Array<number>>
     {
-        return this.rp.createQueryBuilder().getMany();
+        return this.rp.find({
+            skip: ((page || 0) * this.take),
+            take: this.take,
+        });
     }
 }
 

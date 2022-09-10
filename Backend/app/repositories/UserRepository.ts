@@ -5,11 +5,13 @@ import AbstractRepository from "./AbstractRepository";
 class UserRepository extends AbstractRepository
 {
     public rp: any;
+    public take: number;
 
     constructor()
     {
         super();
         this.rp = ds.getRepository(User);
+        this.take = 10;
     }
 }
 

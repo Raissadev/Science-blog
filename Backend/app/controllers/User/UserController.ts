@@ -10,7 +10,9 @@ class UserController
 
     public async index(req: Request, res: Response): Promise<Response>
     {
-        const all = await UserRepository.all();
+        const { page } = req.query;
+
+        const all = await UserRepository.all(Number(page));
 
         return res.json({
             message: "list successfully",

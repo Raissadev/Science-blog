@@ -11,6 +11,7 @@ import { defaultLog as log, expressLog } from "../config/logger";
 import { logger } from "express-winston";
 import { version } from "./version";
 import Proc from "../config/proc";
+import { pagination } from 'typeorm-pagination'
 
 import routes from "./routes/index";
 
@@ -28,6 +29,7 @@ const main: any = () => {
 
     app.use(express.json());
     app.use(bodyParser.json());
+    app.use(pagination);
     app.use(cors());
     app.use("/api/v1", routes);
 
