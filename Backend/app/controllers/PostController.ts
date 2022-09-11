@@ -22,6 +22,7 @@ class PostController
 
     public async store(req: Request, res: Response): Promise<Response>
     {
+        console.log(req.body);
         const { title, thumb, content } = req.body;
         const owner_id = req.userId;
 

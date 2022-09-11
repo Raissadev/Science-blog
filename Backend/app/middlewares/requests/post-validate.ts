@@ -11,7 +11,7 @@ class PostValidate
     public validate: any = [
         check("title").isString(),
         check("content").isString(),
-        // check("thumb").isString(),
+        check("thumb").isString(),
 
         (req: Request, res: Response, next: NextFunction) => {(
             !validationResult(req).isEmpty() ?

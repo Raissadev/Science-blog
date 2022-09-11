@@ -8,9 +8,9 @@ class Upload
 {
     private URL: string = path.basename('/public') + '/' + path.basename('/storage');
 
-    private async storage(): Promise<multer.StorageEngine>
+    private storage(): multer.StorageEngine
     {
-        const data = await multer.diskStorage({
+        return multer.diskStorage({
             destination: (req: Request, file: any, cb: any) => {
                 if (!fs.existsSync(this.URL))
                     fs.mkdirSync(this.URL);
@@ -20,9 +20,29 @@ class Upload
                 cb(null, `${new Date().getTime()}.${type}`);
             },
         });
+    }
 
-        return data;
+    private fileFilter(): any
+    {
+        return (req: Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
+            const type = mime.extension(file.mimetype);
+            
+            const conditions = ["png", "jpg", "jpeg"];
+
+            if (conditions.includes(`${type}`))
+                cb(null, true);
+
+            cb(null, false);
+        };
+    }
+
+    get getConfig(): multer.Options
+    {
+        return {
+            storage: this.storage(),
+            fileFilter: this.fileFilter(),
+        }
     }
 }
 
-export default Upload;
+export default new Upload;

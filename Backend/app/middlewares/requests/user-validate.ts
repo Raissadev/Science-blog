@@ -10,7 +10,7 @@ class UserValidate
 
     public validate: any = [
         check("name").isString(),
-        check("email").isString(),
+        check("email").isString().isEmail(),
         check("password").isString(),
 
         (req: Request, res: Response, next: NextFunction) => {(
