@@ -5,26 +5,27 @@ import TypeUser from "../@types/type-user";
 @Entity('users')
 class User {
     @PrimaryGeneratedColumn('uuid')
-    id: string;
+    public id: string;
 
     @Column('text')
-    name: string;
+    public name: string;
 
     @Column('text')
-    email: string;
+    public email: string;
 
     @Column('text')
-    password: string;
+    public password: string;
 
     @Column('text')
-    avatar: string;
+    public avatar: string;
 
     @Column({
         type: 'enum',
         enum: TypeUser,
         default: TypeUser.User,
+
     })
-    type: TypeUser;
+    public type: TypeUser;
 
     @BeforeInsert()
     @BeforeUpdate()

@@ -4,6 +4,7 @@ import authMiddleware from  "../middlewares/AuthMiddeware";
 
 import user from "./user/index";
 import auth from "./user/auth";
+import post from "./post/index";
 
 const routes: any = Router();
 
@@ -13,5 +14,6 @@ routes.get("/", (req: Request, res: Response) => {
 
 routes.use("/auth", auth);
 routes.use("/users", user);
+routes.use("/posts", post);
 
 export default routes;
