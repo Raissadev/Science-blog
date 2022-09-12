@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import User from "./User";  
 
 @Entity('posts')
@@ -18,6 +18,12 @@ class Post {
 
     @Column('text')
     public thumb: string;
+
+    @CreateDateColumn()
+    created_at: Date;
+ 
+    @UpdateDateColumn()
+    updated_at: Date;
 }
 
 export default Post;

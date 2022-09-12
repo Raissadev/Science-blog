@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, BeforeUpdate } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, BeforeUpdate, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import bycript from "bcryptjs";
 import TypeUser from "../@types/type-user";
   
@@ -26,6 +26,12 @@ class User {
 
     })
     public type: TypeUser;
+
+    @CreateDateColumn()
+    created_at: Date;
+ 
+    @UpdateDateColumn()
+    updated_at: Date;
 
     @BeforeInsert()
     @BeforeUpdate()

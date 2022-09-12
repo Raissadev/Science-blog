@@ -41,6 +41,16 @@ export class CreateUsersTable1662663018151 implements MigrationInterface {
                     enum: ['user', 'creator', 'root'],
                     isNullable: true,
                 },
+                {
+                    name: "created_at",
+                    type: "timestamp",
+                    default: "now()",
+                },
+                {
+                    name: "updated_at",
+                    type: "timestamp",
+                    default: "now()",
+                },
             ],
         }));
     }
