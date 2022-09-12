@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import UserRepository from "../../repositories/UserRepository";
+import TypeUser from "../../@types/type-user";
 
 class UserController
 {
@@ -23,13 +24,18 @@ class UserController
     public async store(req: Request, res: Response): Promise<Response>
     {
         const { name, email, password } = req.body;
+        const avatar = req.file;
 
         const userExists = await UserRepository.rp.findOne({ where: { email } });
+
+        if (!avatar) return res.status(409).json({ message: "Invalid file!" })
 
         if (userExists)
             return res.status(409).json({ message: "user exists!" })
 
-        const user = UserRepository.rp.create({ name, email, password });
+        const user = UserRepository.rp.create({
+            name, avatar: avatar.path, email, password, type: TypeUser.User
+        });
         await UserRepository.rp.save(user);
 
         return res.json({
@@ -56,13 +62,13 @@ class UserController
     public async update(req: Request, res: Response): Promise<Response>
     {
         const { id } = req.params;
-        const { name, avatar, password } = req.body;
+        const { name, password } = req.body;
         
         const exists = await UserRepository.rp.findOne({ where: { id } });
 
         if (!exists) return res.sendStatus(404);
 
-        await UserRepository.rp.update(id, { name, avatar, password });
+        await UserRepository.rp.update(id, { name, password });
 
         return res.json({
             response: "updated successfully"

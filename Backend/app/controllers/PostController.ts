@@ -22,16 +22,18 @@ class PostController
 
     public async store(req: Request, res: Response): Promise<Response>
     {
-        console.log(req.body);
-        const { title, thumb, content } = req.body;
+        const { title, content } = req.body;
+        const thumb = req.file;
         const owner_id = req.userId;
+
+        if (!thumb) return res.status(409).json({ message: "Invalid file!" })
 
         const titleExists = await PostRepository.rp.findOne({ where: { title } });
 
         if (titleExists)
             return res.status(409).json({ message: "title exists!" });
 
-        const post = PostRepository.rp.create({ owner_id, title, thumb, content });
+        const post = PostRepository.rp.create({ owner_id, title, thumb: thumb.path, content });
         await PostRepository.rp.save(post);
 
         return res.json({
@@ -58,13 +60,13 @@ class PostController
     public async update(req: Request, res: Response): Promise<Response>
     {
         const { id } = req.params;
-        const { owner_id, title, thumb, content } = req.body;
+        const { owner_id, title, content } = req.body;
 
         const exists = await PostRepository.rp.findOne({ where: { id } });
 
         if (!exists) return res.sendStatus(404);
 
-        await PostRepository.rp.update(id, { owner_id, title, thumb, content });
+        await PostRepository.rp.update(id, { owner_id, title, content });
 
         return res.json({
             response: "updated succesfully",
