@@ -10,6 +10,7 @@ class PostValidate
 
     public validate: any = [
         check("title").isString(),
+        check("short_description").isString(),
         check("content").isString(),
 
         (req: Request, res: Response, next: NextFunction) => {(

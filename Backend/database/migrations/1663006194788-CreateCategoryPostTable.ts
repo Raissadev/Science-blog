@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm"
 
-export class CreatePostsTable1662918820394 implements MigrationInterface {
+export class CreateCategoryPostTable1663006194788 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void>
     {
         await queryRunner.createTable(new Table({
-            name: 'posts',
+            name: 'category_post',
             columns: [
                 {
                     name: 'id',
@@ -14,28 +14,13 @@ export class CreatePostsTable1662918820394 implements MigrationInterface {
                     isGenerated: true,
                 },
                 {
-                    name: 'owner_id',
-                    type: 'uuid',
+                    name: 'post_id',
+                    type: 'int',
                     isNullable: true,
                 },
                 {
-                    name: 'title',
-                    type: 'varchar',
-                    isUnique: true,
-                },
-                {
-                    name: 'short_description',
-                    type: 'varchar',
-                    isNullable: true,
-                },
-                {
-                    name: 'content',
-                    type: 'varchar',
-                    isNullable: true,
-                },
-                {
-                    name: 'thumb',
-                    type: 'varchar',
+                    name: 'category_id',
+                    type: 'int',
                     isNullable: true,
                 },
                 {
@@ -52,11 +37,20 @@ export class CreatePostsTable1662918820394 implements MigrationInterface {
         }));
 
         await queryRunner.createForeignKey(
-            "posts",
+            "category_post",
             new TableForeignKey({
-                columnNames: ["owner_id"],
+                columnNames: ["post_id"],
                 referencedColumnNames: ["id"],
-                referencedTableName: "users",
+                referencedTableName: "posts",
+                onDelete: "CASCADE",
+            })
+        );
+        await queryRunner.createForeignKey(
+            "category_post",
+            new TableForeignKey({
+                columnNames: ["category_id"],
+                referencedColumnNames: ["id"],
+                referencedTableName: "categories",
                 onDelete: "CASCADE",
             })
         );
@@ -64,7 +58,7 @@ export class CreatePostsTable1662918820394 implements MigrationInterface {
 
     public async down(queryRunner: QueryRunner): Promise<void>
     {
-        await queryRunner.dropTable('posts');
+        await queryRunner.dropTable('category_post');
     }
 
 }

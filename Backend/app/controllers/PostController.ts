@@ -22,19 +22,19 @@ class PostController
 
     public async store(req: Request, res: Response): Promise<Response>
     {
-        const { title, content } = req.body;
+        const { title, short_description, content, categories } = req.body;
         const thumb = req.file;
         const owner_id = req.userId;
 
         if (!thumb) return res.status(409).json({ message: "Invalid file!" })
 
-        const titleExists = await PostRepository.rp.findOne({ where: { title } });
+        const post = await PostRepository.create(
+            { owner_id, title, short_description, thumb: thumb.path, content },
+            categories
+        );
 
-        if (titleExists)
+        if (post === "exists")
             return res.status(409).json({ message: "title exists!" });
-
-        const post = PostRepository.rp.create({ owner_id, title, thumb: thumb.path, content });
-        await PostRepository.rp.save(post);
 
         return res.json({
             message: "created successfully",
@@ -46,7 +46,7 @@ class PostController
     {
         const { id } = req.params;
 
-        const post = await PostRepository.rp.findOne({ where: { id: id } });
+        const post = await PostRepository.show(id);
 
         if (!post)
             return res.status(404).json({ message: "post not exists!" });
@@ -62,11 +62,9 @@ class PostController
         const { id } = req.params;
         const { owner_id, title, content } = req.body;
 
-        const exists = await PostRepository.rp.findOne({ where: { id } });
-
-        if (!exists) return res.sendStatus(404);
-
-        await PostRepository.rp.update(id, { owner_id, title, content });
+        const post = await PostRepository.update(id, { owner_id, title, content });
+    
+        if (!post) return res.sendStatus(404);
 
         return res.json({
             response: "updated succesfully",
@@ -77,7 +75,7 @@ class PostController
     {
         const { id } = req.params;
 
-        await PostRepository.rp.delete(id);
+        await PostRepository.delete(id);
 
         return res.json({
             response: "deleted successfully"

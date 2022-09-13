@@ -1,10 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToMany, JoinColumn, CreateDateColumn, UpdateDateColumn, JoinTable, BeforeUpdate } from "typeorm";
 import User from "./User";  
+import Category from "./Category/Category";  
 
 @Entity('posts')
 class Post {
     @PrimaryGeneratedColumn()
-    public id: string;
+    public id: Number;
 
     @OneToOne(() => User, (user: User) => user.id)
     @JoinColumn({name: "owner_id"})
@@ -12,6 +13,9 @@ class Post {
 
     @Column('text')
     public title: string;
+
+    @Column('text')
+    public short_description: string;
 
     @Column('text')
     public content: string;
@@ -24,6 +28,15 @@ class Post {
  
     @UpdateDateColumn()
     updated_at: Date;
+
+    @ManyToMany(() => Category)
+    @JoinTable()
+    categories: Category[]
+
+    @BeforeUpdate()
+    updateDates() {
+        this.updated_at = new Date()
+    }
 }
 
 export default Post;

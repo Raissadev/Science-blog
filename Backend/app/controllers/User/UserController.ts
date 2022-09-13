@@ -26,17 +26,14 @@ class UserController
         const { name, email, password } = req.body;
         const avatar = req.file;
 
-        const userExists = await UserRepository.rp.findOne({ where: { email } });
-
         if (!avatar) return res.status(409).json({ message: "Invalid file!" })
 
-        if (userExists)
-            return res.status(409).json({ message: "user exists!" })
+        const user = await UserRepository.create(
+            { name, avatar: avatar.path, email, password, type: TypeUser.User }, {}
+        );
 
-        const user = UserRepository.rp.create({
-            name, avatar: avatar.path, email, password, type: TypeUser.User
-        });
-        await UserRepository.rp.save(user);
+        if (user === "exists")
+            return res.status(409).json({ message: "email exists!" });
 
         return res.json({
             message: "created successfully",
@@ -48,7 +45,7 @@ class UserController
     {
         const { id } = req.params;
 
-        const user = await UserRepository.rp.findOne({ where: { id: id } });
+        const user = await UserRepository.show(id);
 
         if (!user)
             return res.status(404).json({ message: "user not exists" });
@@ -64,11 +61,9 @@ class UserController
         const { id } = req.params;
         const { name, password } = req.body;
         
-        const exists = await UserRepository.rp.findOne({ where: { id } });
-
-        if (!exists) return res.sendStatus(404);
-
-        await UserRepository.rp.update(id, { name, password });
+        const user = await UserRepository.update(id, { name, password });
+    
+        if (!user) return res.sendStatus(404);
 
         return res.json({
             response: "updated successfully"
@@ -79,7 +74,7 @@ class UserController
     {
         const { id } = req.params;
 
-        await UserRepository.rp.delete(id);
+        await UserRepository.delete(id);
 
         return res.json({ response: "deleted successfully" });
     }
