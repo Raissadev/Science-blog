@@ -32,7 +32,7 @@ class UserController
             { name, avatar: avatar.path, email, password, type: TypeUser.User }, {}
         );
 
-        if (user === "exists")
+        if (!user)
             return res.status(409).json({ message: "email exists!" });
 
         return res.json({

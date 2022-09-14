@@ -18,7 +18,7 @@ class UserRepository extends AbstractRepository
     {
         const emailExists = await this.rp.findOne({ where: { email: params.email } });
 
-        if (emailExists) return "exists";
+        if (emailExists) return false;
 
         const data = this.rp.create(params);
 

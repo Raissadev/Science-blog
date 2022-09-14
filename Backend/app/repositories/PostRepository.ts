@@ -15,11 +15,20 @@ class PostRepository extends AbstractRepository
         this.take = 10;
     }
 
+    public async all(page: any): Promise<Array<number>>
+    {
+        return this.rp.find({
+            skip: ((page || 0) * this.take),
+            take: this.take,
+            relations: ["categories"],
+        });
+    }
+
     public async create(params: any, relations: any): Promise<any>
     {
         const titleExists = await this.rp.findOne({ where: { title: params.title } });
 
-        if (titleExists) return "exists";
+        if (titleExists) return false;
 
         const data = this.rp.create(params);
 

@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToMany, JoinColumn, CreateDateColumn, UpdateDateColumn, JoinTable, BeforeUpdate } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToMany, JoinColumn, CreateDateColumn, UpdateDateColumn, JoinTable, BeforeUpdate, ManyToOne } from "typeorm";
 import User from "./User";  
 import Category from "./Category/Category";  
+import CategoryPost from "./Category/CategoryPost";  
 
 @Entity('posts')
 class Post {
@@ -29,8 +30,18 @@ class Post {
     @UpdateDateColumn()
     updated_at: Date;
 
-    @ManyToMany(() => Category)
-    @JoinTable()
+    @ManyToMany((type) => Category)
+    @JoinTable({
+        name: "category_post",
+        joinColumn: {
+            name: "post_id",
+            referencedColumnName: "id"
+        },
+        inverseJoinColumn: {
+            name: "category_id",
+            referencedColumnName: "id"
+        }
+    })
     categories: Category[]
 
     @BeforeUpdate()

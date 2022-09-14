@@ -33,7 +33,7 @@ class PostController
             categories
         );
 
-        if (post === "exists")
+        if (!post)
             return res.status(409).json({ message: "title exists!" });
 
         return res.json({
