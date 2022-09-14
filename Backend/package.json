@@ -8,6 +8,7 @@
     "start": "pm2-runtime --interpreter ts-node app/server.ts -i 4",
     "dev": "nodemon --files app/server.ts",
     "typeorm": "typeorm-ts-node-esm",
+    "typeorm:create": "typeorm-ts-node-esm migration:create",
     "typeorm:run": "typeorm-ts-node-esm migration:run -d ./config/data-source.ts ",
     "db:seed": "ts-node ./node_modules/typeorm/cli.js migration:run -d ./app/config/data-source.ts",
     "build": "genversion -e app/version.ts && tsc",

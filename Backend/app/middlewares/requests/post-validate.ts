@@ -12,6 +12,7 @@ class PostValidate
         check("title").isString(),
         check("short_description").isString(),
         check("content").isString(),
+        check("categories").isArray(),
 
         (req: Request, res: Response, next: NextFunction) => {(
             !validationResult(req).isEmpty() ?

@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import env from "./environment";
 
-export const ds = new DataSource({
+export const ds: DataSource = new DataSource({
     type: "postgres",
     host: env.POSTGRES_HOST,
     port: env.POSTGRES_PORT,
