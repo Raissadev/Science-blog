@@ -39,10 +39,15 @@ img.ant-image-img {
 
 // Buttons and Inputs
 
-button.ant-btn {
-    background: @dark-weak !important;
-    border-radius: 2px !important;
+button.ant-btn, .ant-btn {
+    background: @blue-strong !important;
+    color: @white !important;
+    border-radius: 30px !important;
     border: 0 !important;
+
+    &.ant-btn-lg {
+        padding: 0.5rem 2rem;
+    }
 
     &:hover {
         background: @dark !important;
@@ -51,85 +56,3 @@ button.ant-btn {
 }
 
 // Boxes, Forms and Modals
-
-.ant-popover-inner {
-    background-color: @dark-default !important;
-    max-width: 30vw !important;
-
-    & .ant-popover-title {
-        color: @white;
-        border-color: @dark-weak !important;
-    }
-
-    & .ant-popover-inner-content {
-        color: @white-weak;
-    }
-
-    & .ant-popover-arrow .ant-popover-arrow-content {
-        --antd-arrow-background-color: @dark-default !important;
-    }
-
-    @media @tablet {
-        & {
-            max-width: 70vw !important;
-        }
-    }
-
-    @media @phone {
-        & {
-            max-width: 70vw !important;
-        }
-    }
-}
-
-.ant-modal-content {
-    background-color: @dark-default !important;
-
-    & .ant-modal-header {
-        background: @dark-default !important;
-        border-bottom: 1px solid @dark-weak !important;
-    }
-
-    & .ant-modal-title {
-        color: @white !important;
-    }
-
-    & .ant-modal-footer {
-        border-top: 1px solid @dark-weak !important;
-
-        & button.ant-btn {
-            background: @dark !important;
-            color: @white-weak !important;
-            border: 1px solid @dark-default !important;
-            border-radius: 3px !important;
-        }
-    }
-}
-
-form.ant-form {
-
-    & .ant-form-item {
-
-        & .ant-col-16 {
-            max-width: 100%;
-        }
-
-        & .ant-input {
-            background: @dark-weak !important;
-            border-color: @dark-weak !important;
-            color: @white !important;
-        }
-    }
-
-    & .ant-form-item-explain-error {
-        margin-bottom: 0.8rem;
-    }
-}
-
-div.ant-alert {
-    width: auto;
-    max-width: 30vw;
-    position: fixed;
-    top: 10%;
-    right: 2%;
-}

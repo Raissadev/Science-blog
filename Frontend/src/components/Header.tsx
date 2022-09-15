@@ -1,4 +1,4 @@
-import { Col, Row, Layout, Menu, Typography } from 'antd';
+import { Col, Row, Layout, Menu, Typography, Button } from 'antd';
 
 const { Header } = Layout;
 const { Title } = Typography;
@@ -9,30 +9,32 @@ function Head(): any
         <>
             <Layout>
                 <Header>
-                    <Row align="middle" justify="space-between">
-                        <Col>
-                            <Menu mode="horizontal">
-                                <Menu.Item key="initial">
-                                    <a href="">Initial</a>
-                                </Menu.Item>
-                                <Menu.Item key="recents">
-                                    <a href="">Recents</a>
-                                </Menu.Item>
-                            </Menu>
-                        </Col>
-                        <Col span={6} offset={6}>
-                            <Title level={4}>Science Blog</Title>
-                        </Col>
-                        <Col span={6} offset={6}>
-                            <Menu mode="horizontal">
-                                <Menu.Item key="my-account">
-                                    <a href="">My account</a>
-                                </Menu.Item>
-                                <Menu.Item key="Repository">
-                                    <a href="">Repository</a>
-                                </Menu.Item>
-                            </Menu>
-                        </Col>
+                    <Row align="middle" justify="center">
+                        <Menu mode="horizontal">
+                            <Menu.Item key="home">
+                                <Title level={4}>Science Blog</Title>
+                            </Menu.Item>
+                            <Menu.Item key="home">
+                                <a href="/home">Home</a>
+                            </Menu.Item>
+                            <Menu.Item key="repository">
+                                <a href="/">Repository</a>
+                            </Menu.Item>
+                            <Menu.Item key="repository">
+                                <a href="/">Repository</a>
+                            </Menu.Item>
+                            <Menu.Item key="repository">
+                                <a href="/">Repository</a>
+                            </Menu.Item>
+                            <Menu.Item key="repository">
+                                <a href="/">Repository</a>
+                            </Menu.Item>
+                            <Menu.Item key="repository" className="button-menu">
+                                <Button type="primary" size="large" href="/">
+                                    Login
+                                </Button>
+                            </Menu.Item>
+                        </Menu>
                     </Row>
                 </Header>
             </Layout>

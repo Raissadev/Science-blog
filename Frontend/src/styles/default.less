@@ -1,0 +1,31 @@
+header.ant-layout-header {
+    background-color: @white;
+    overflow-y: hidden;
+    padding: 0;
+    min-height: 9vh !important;
+
+    & .ant-row {
+        width: 100%;
+        box-shadow: 0 0 20px 13px @gray-default-two;
+
+        & .ant-menu-horizontal {
+            min-width: 100%;
+            border-bottom: 0;
+            justify-content: center;
+
+            & > .ant-menu-item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &:first-child {
+                    margin-right: 3rem;
+                }
+
+                &.button-menu {
+                    margin-left: 3rem;
+                }
+            }
+        }
+    }
+}
