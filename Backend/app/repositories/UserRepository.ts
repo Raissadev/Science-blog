@@ -14,7 +14,7 @@ class UserRepository extends AbstractRepository
         this.take = 10;
     }
 
-    public async create(params: any, relations: any): Promise<any>
+    public async create(params: any, relations: any = null): Promise<any>
     {
         const emailExists = await this.rp.findOne({ where: { email: params.email } });
 

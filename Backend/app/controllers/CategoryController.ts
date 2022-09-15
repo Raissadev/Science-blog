@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import PostRepository from "../repositories/PostRepository";
+import Category from "../repositories/Category/CategoryRepository";
 
-class PostController
+class CategoryController
 {
     constructor()
     {
@@ -10,10 +10,10 @@ class PostController
 
     public async index(req: Request, res: Response): Promise<Response>
     {
-        const { page, title, short_description, order_by_title, order_by_created } = req.query;
+        const { page, name } = req.query;
 
-        const all = await PostRepository.all(
-            Number(page), { title, short_description, order_by_title, order_by_created }
+        const all = await Category.all(
+            Number(page), { name }
         );
 
         return res.json({
@@ -24,23 +24,17 @@ class PostController
 
     public async store(req: Request, res: Response): Promise<Response>
     {
-        const { title, short_description, content, categories } = req.body;
-        const thumb = req.file;
+        const { name } = req.body;
         const owner_id = req.userId;
 
-        if (!thumb) return res.status(409).json({ message: "Invalid file!" })
+        const category = await Category.create({ name });
 
-        const post = await PostRepository.create(
-            { owner_id, title, short_description, thumb: thumb.path, content },
-            categories
-        );
-
-        if (!post)
-            return res.status(409).json({ message: "title exists!" });
+        if (!category)
+            return res.status(409).json({ message: "error" });
 
         return res.json({
             message: "created successfully",
-            data: post,
+            data: category,
         });
     }
 
@@ -48,14 +42,14 @@ class PostController
     {
         const { id } = req.params;
 
-        const post = await PostRepository.show(id);
+        const category = await Category.show(id);
 
-        if (!post)
-            return res.status(404).json({ message: "post not exists!" });
+        if (!category)
+            return res.status(404).json({ message: "category not exists!" });
 
         return res.json({
             response: "show successfully",
-            data: post
+            data: category
         });
     }
 
@@ -64,9 +58,9 @@ class PostController
         const { id } = req.params;
         const { owner_id, title, content } = req.body;
 
-        const post = await PostRepository.update(id, { owner_id, title, content });
+        const category = await Category.update(id, { owner_id, title, content });
     
-        if (!post) return res.sendStatus(404);
+        if (!category) return res.sendStatus(404);
 
         return res.json({
             response: "updated succesfully",
@@ -77,7 +71,7 @@ class PostController
     {
         const { id } = req.params;
 
-        await PostRepository.delete(id);
+        await Category.delete(id);
 
         return res.json({
             response: "deleted successfully"
@@ -85,4 +79,4 @@ class PostController
     }
 }
 
-export default new PostController;
+export default new CategoryController;

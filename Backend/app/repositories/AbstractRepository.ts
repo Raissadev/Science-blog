@@ -11,7 +11,7 @@ abstract class AbstractRepository
         });
     }
 
-    public async create(params: any, relations: any): Promise<any>
+    public async create(params: any, relations: any = null): Promise<any>
     {
         const data = this.rp.create(params);
 

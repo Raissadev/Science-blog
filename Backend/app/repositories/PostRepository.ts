@@ -33,7 +33,7 @@ class PostRepository extends AbstractRepository
         });
     }
 
-    public async create(params: any, relations: any): Promise<any>
+    public async create(params: any, relations: any = null): Promise<any>
     {
         const titleExists = await this.rp.findOne({ where: { title: params.title } });
 
