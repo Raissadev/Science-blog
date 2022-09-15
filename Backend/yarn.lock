@@ -3601,13 +3601,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typeorm-paginate@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/typeorm-paginate/-/typeorm-paginate-1.0.7.tgz#1e4d93eea0ec6f06b0bfbddef657980184e5ed91"
-  integrity sha512-0S9xP4aCjuuARkLLZrI5ZW3oEYy2e0pPPJZqTRiqptxZZ6ToIONku2o2+sKEX6+vmM4TdyhpFzIOyfEigmFZpQ==
-  dependencies:
-    typeorm "^0.3.7"
-    typescript "^4.7.4"
+typeorm-express-query-builder@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/typeorm-express-query-builder/-/typeorm-express-query-builder-1.6.0.tgz#d132d79e31403948a9221e739d4894881d745186"
+  integrity sha512-b/bApfd/GPwAbGs+ks5xgciy/HbthbCOrLBrG4KLD6Qpk3EeNpxU/LXkWiB019lvWC+5iP/YnVKPd1yiWVVoXA==
 
 typeorm-pagination@^2.0.3:
   version "2.0.3"
@@ -3641,7 +3638,7 @@ typeorm@^0.2.25:
     yargs "^17.0.1"
     zen-observable-ts "^1.0.0"
 
-typeorm@^0.3.6, typeorm@^0.3.7:
+typeorm@^0.3.6:
   version "0.3.9"
   resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.3.9.tgz#ad0f525d81c081fd11006f97030f47a55978ac81"
   integrity sha512-xNcE44D4hn74n7pjuMog9hRgep+BiO3IBpjEaQZ8fb56zsDz7xHT1GAeWwmGuuU+4nDEELp2mIqgSCR+zxR7Jw==
@@ -3668,11 +3665,6 @@ typescript@^4.7.2:
   version "4.8.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.8.2.tgz#e3b33d5ccfb5914e4eeab6699cf208adee3fd790"
   integrity sha512-C0I1UsrrDHo2fYI5oaCGbSejwX4ch+9Y5jTQELvovfmFkK3HHSZJB8MSJcWLmCUBzQBchCrZ9rMRV6GuNrvGtw==
-
-typescript@^4.7.4:
-  version "4.8.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.8.3.tgz#d59344522c4bc464a65a730ac695007fdb66dd88"
-  integrity sha512-goMHfm00nWPa8UvR/CPSvykqf6dVV8x/dp0c5mFTMTIu0u0FlGWRioyy7Nn0PGAdHxpJZnuO/ut+PpQ8UiHAig==
 
 undefsafe@^2.0.5:
   version "2.0.5"

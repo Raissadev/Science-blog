@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { query, Request, Response } from "express";
 import PostRepository from "../repositories/PostRepository";
 
 class PostController
@@ -10,9 +10,11 @@ class PostController
 
     public async index(req: Request, res: Response): Promise<Response>
     {
-        const { page } = req.query;
+        const { page, title, short_description, order_by_title, order_by_created } = req.query;
 
-        const all = await PostRepository.all(Number(page));
+        const all = await PostRepository.all(
+            Number(page), { title, short_description, order_by_title, order_by_created }
+        );
 
         return res.json({
             message: "list successfully",

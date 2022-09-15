@@ -3,7 +3,7 @@ abstract class AbstractRepository
     abstract rp: any;
     abstract take: number;
 
-    public async all(page: any): Promise<Array<number>>
+    public async all(page: any, search: any = null): Promise<Array<number>>
     {
         return this.rp.find({
             skip: ((page || 0) * this.take),
