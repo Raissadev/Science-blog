@@ -1,11 +1,19 @@
-import { Layout } from 'antd';
+import { Layout, Typography, Row } from 'antd';
+
+const { Title } = Typography;
+const { Footer } = Layout;
 
 function Foot(): any
 {
     return(
         <>
-            <Layout>
-            </Layout>
+            <Footer>
+                <Row align="middle" justify="center" className="copyright">
+                    <Title level={4}>
+                        ©2022 raissadev - All rights reserved
+                    </Title>
+                </Row>
+            </Footer>
         </>
     );
 }

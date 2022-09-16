@@ -2,28 +2,109 @@ header.ant-layout-header {
     background-color: @white;
     overflow-y: hidden;
     padding: 0;
-    min-height: 9vh !important;
+    z-index: 999;
+    position: relative;
+    box-shadow: 0 0 20px 13px @gray-default-two;
 
     & .ant-row {
         width: 100%;
-        box-shadow: 0 0 20px 13px @gray-default-two;
 
         & .ant-menu-horizontal {
             min-width: 100%;
             border-bottom: 0;
             justify-content: center;
+            align-items: center;
 
             & > .ant-menu-item {
                 display: flex;
                 align-items: center;
                 justify-content: center;
 
+                &:hover {
+                    color: @dark !important;
+                }
+
                 &:first-child {
-                    margin-right: 3rem;
+                    margin-right: 4rem;
+                    padding-left: 0 !important;
+
+                    &:hover::after {
+                        border: 0 !important;
+                    }
                 }
 
                 &.button-menu {
-                    margin-left: 3rem;
+                    margin-left: 4rem;
+                    padding-right: 0 !important;
+
+                    &:hover::after {
+                        border: 0 !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer.ant-layout-footer {
+    background: #fff !important;
+    margin-top: 1rem !important;
+    border-top: 1px solid @gray-default-two !important;
+
+    & h4.ant-typography {
+        font-size: 0.8rem !important;
+        color: @gray !important;
+        font-weight: 500 !important;
+    }
+}
+
+// Home
+section.banner {
+    background: url('../assets/images/background.jpg');
+    background-size: cover;
+    background-position: bottom;
+    padding: 5rem 10rem;
+    box-shadow: 0 0 20px 13px @gray-default-two;
+
+    & .ant-row {
+        margin: 0 auto;
+        text-align: center;
+
+        &:first-child {
+            margin-bottom: 1rem !important;
+
+            & .ant-typography {
+                color: @blue-strong !important;
+                font-size: 3.5rem !important;
+                font-weight: 700 !important;
+    
+                & > span {
+                    color: @blue-dark;
+                }
+            }
+        }
+
+        &:nth-of-type(2) {
+            margin-bottom: 2rem !important;
+
+            & .ant-typography {
+                color: @gray-strong !important;
+            }
+        }
+
+        &:last-child {
+            & span.ant-input-wrapper.ant-input-group {
+                & .ant-input {
+                    border-radius: 30px 0 0 30px !important;
+                }
+
+                & .ant-input-group-addon {
+                    border-radius: 0 30px 30px 0 !important;
+                    padding-right: 0.5rem !important;
+                }
+
+                & .ant-btn .anticon {
+                    color: @white !important;
                 }
             }
         }

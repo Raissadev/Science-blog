@@ -17,14 +17,15 @@ body, .ant-layout {
 
 // Fonts
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, .ant-typography {
     color: @dark-default !important;
     font-weight: 600 !important;
     margin: 0 !important;
 }
 
-p {
+p, p.ant-typography, div.ant-typography {
     color: @gray !important;
+    font-weight: 400 !important;
 }
 
 .anticon {
@@ -44,9 +45,15 @@ button.ant-btn, .ant-btn {
     color: @white !important;
     border-radius: 30px !important;
     border: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0 !important;
 
     &.ant-btn-lg {
-        padding: 0.5rem 2rem;
+        padding: 0rem 2rem;
+        height: 35px;
+        font-size: 0.9rem !important;
     }
 
     &:hover {
@@ -56,3 +63,11 @@ button.ant-btn, .ant-btn {
 }
 
 // Boxes, Forms and Modals
+
+input.ant-input {
+    background-color: @white-strong !important;
+    border-radius: 12px !important;
+    height: 42px !important;
+    border: 1px solid @white-strong !important;
+    box-shadow: unset !important;
+}
