@@ -19,7 +19,6 @@ body, .ant-layout {
 
 h1, h2, h3, h4, .ant-typography {
     color: @dark-default !important;
-    font-weight: 600 !important;
     margin: 0 !important;
 }
 
@@ -34,8 +33,13 @@ p, p.ant-typography, div.ant-typography {
 
 // Images
 
-img.ant-image-img {
-    object-fit: cover !important;
+.ant-image {
+    border-radius: 12px;
+
+    & img.ant-image-img {
+        object-fit: cover !important;
+        border-radius: 12px;
+    }
 }
 
 // Buttons and Inputs
@@ -49,6 +53,7 @@ button.ant-btn, .ant-btn {
     align-items: center;
     justify-content: center;
     line-height: 0 !important;
+    box-shadow: none !important;
 
     &.ant-btn-lg {
         padding: 0rem 2rem;
@@ -59,6 +64,30 @@ button.ant-btn, .ant-btn {
     &:hover {
         background: @dark !important;
         color: @white !important;
+    }
+
+    &.target {
+        border-radius: 12px !important;
+        background-color: @purple-weak !important;
+        color: @purple-strong !important;
+        display: inline-flex !important;
+        margin-right: 0.5rem !important;
+        font-size: 0.8rem !important;
+
+        &:nth-of-type(2) {
+            background-color: @rad-weak !important;
+            color: @rad-strong !important;
+        }
+
+        &:nth-of-type(3) {
+            background-color: @blue !important;
+            color: @blue-strong !important;
+        }
+
+        &:last-child {
+            background-color: @green-weak !important;
+            color: @green-strong !important;
+        }
     }
 }
 
@@ -71,3 +100,4 @@ input.ant-input {
     border: 1px solid @white-strong !important;
     box-shadow: unset !important;
 }
+

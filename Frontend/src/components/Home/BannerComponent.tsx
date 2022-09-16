@@ -1,8 +1,6 @@
 import { Row, Layout, Typography, Input, Space } from 'antd';
-import { AudioOutlined } from '@ant-design/icons';
 
-const { Title } = Typography;
-const { Paragraph } = Typography;
+const { Title, Paragraph } = Typography;
 const { Search } = Input;
 
 function BannerComponent(): any

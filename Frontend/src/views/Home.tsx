@@ -1,5 +1,6 @@
 import { Layout } from 'antd';
 import BannerComponent from "../components/Home/BannerComponent";
+import ListArticles from '../components/Home/ListArticlesComponent';
 
 function Home(): any
 {
@@ -7,6 +8,8 @@ function Home(): any
         <>
             <Layout>
                 <BannerComponent />
+
+                <ListArticles />
             </Layout>
         </>
     );
