@@ -6,8 +6,8 @@ import CategoryValidate from "../../middlewares/requests/category-validate";
 
 const routes = Router();
 
-routes.get("/", authMiddleware, CategoryController.index);
-routes.get("/:id", authMiddleware, CategoryController.show);
+routes.get("/", CategoryController.index);
+routes.get("/:id", CategoryController.show);
 routes.post("/", CategoryValidate.validate, authMiddleware, postPermission, CategoryController.store);
 routes.put("/:id", CategoryValidate.validate, authMiddleware, postPermission, CategoryController.update);
 routes.delete("/:id", authMiddleware, postPermission, CategoryController.delete);

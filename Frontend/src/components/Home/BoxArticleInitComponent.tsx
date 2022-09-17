@@ -1,8 +1,9 @@
 import { Row, Layout, Image, Col, Typography, Button } from 'antd';
+import { url } from '../../services/api';
 
 const { Paragraph, Title } = Typography;
 
-function BoxArticleInit(): any
+function BoxArticleInit(property: any): any
 {
     return(
         <>
@@ -10,32 +11,31 @@ function BoxArticleInit(): any
                 <Row align="top" justify="space-between">
                     <Col>
                         <Image
-                            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                            src={ url + "/" + property.article?.thumb }
                             preview={false}
                         />
                     </Col>
                     <Col>
-                        <Button type="primary" className="target">
-                            New
-                        </Button>
-                        <Button type="primary" className="target">
-                            New
-                        </Button>
+                    {property?.article?.categories?.map((data: any) => {
+                        return (
+                            <Button type="primary" className="target">
+                                { data.name }
+                            </Button>
+                        );
+                    })}
                         <Title level={3}>
-                            Science Blog
+                            { property.article?.title }
                         </Title>
                         <Paragraph>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis molestie ut magna vitae eleifend. 
-                            Donec a dictum ex, eget porta libero. Vivamus dapibus tellus vulputate augue consequat, feugiat 
-                            pellentesque sapien egestas. Suspendisse tristique fermentum nibh, eget viverra neque fringilla a.
+                            { property.article?.short_description }
                         </Paragraph>
                         <Row className="box-article-user">
                             <Image
-                                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                                src={url + "/" + property.article?.owner_id?.avatar }
                                 preview={false}
                             />
                             <Title level={5}>
-                                By: Raissadev <br />
+                                By: { property.article?.owner_id?.name } <br />
                                 <span>Just now</span>
                             </Title>
                         </Row>

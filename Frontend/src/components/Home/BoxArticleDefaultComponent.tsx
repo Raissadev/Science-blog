@@ -1,8 +1,9 @@
 import { Row, Layout, Image, Col, Typography, Button } from 'antd';
+import { url } from '../../services/api';
 
 const { Paragraph, Title } = Typography;
 
-function BoxArticleDefault(): any
+function BoxArticleDefault(property: any): any
 {
     return(
         <>
@@ -10,26 +11,30 @@ function BoxArticleDefault(): any
                 <Row align="top" justify="space-between">
                     <Col>
                         <Image
-                            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                            src={ url + "/" + property.article?.thumb }
                             preview={false}
                         />
                     </Col>
                     <Col>
-                        <Button type="primary" className="target">
-                            New
-                        </Button>
+                        {property?.article?.categories?.map((data: any) => {
+                            return (
+                                <Button type="primary" className="target">
+                                    { data.name }
+                                </Button>
+                            );
+                        })}
                         <Title level={3}>
-                            Science Blog
+                            { property?.article?.title }
                         </Title>
                         <Paragraph>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis molestie ut magna vitae eleifend. 
+                            { property?.article?.short_description }
                         </Paragraph>
                         <Row className="box-article-user">
                             <Image
-                                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                                src={url + "/" + property.article?.owner_id?.avatar }
                             />
                             <Title level={5}>
-                                By: Raissadev <br />
+                                By: { property.article?.owner_id?.name } <br />
                                 <span>Just now</span>
                             </Title>
                         </Row>

@@ -38,7 +38,7 @@ const main: any = () => {
 
     app.use("/static", express.static(buildPath));
     app.use("/public", express.static(staticPath));
-    app.use("/public", express.static(path.join(__dirname, '..', 'public')));
+    app.use("/api/v1/public", express.static(path.join(__dirname, '..', 'public')));
 
     app.use("*", express.static(buildPath));
 

@@ -8,8 +8,8 @@ import PostValidate from "../../middlewares/requests/post-validate";
 
 const routes = Router();
 
-routes.get("/", authMiddleware, PostController.index);
-routes.get("/:id", authMiddleware, PostController.show);
+routes.get("/", PostController.index);
+routes.get("/:id", PostController.show);
 routes.post("/", multer(Upload.getConfig).single("thumb"), PostValidate.validate, authMiddleware, postPermission, PostController.store);
 routes.put("/:id", PostValidate.validate, authMiddleware, postPermission, PostController.update);
 routes.delete("/:id", authMiddleware, postPermission, PostController.delete);

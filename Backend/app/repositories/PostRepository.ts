@@ -21,7 +21,7 @@ class PostRepository extends AbstractRepository
         return await this.rp.find({
             skip: ((page || 0) * this.take),
             take: this.take,
-            relations: ["categories"],
+            relations: ["categories", "owner_id"],
             where: {
                 title: Like(`%${search?.title || ''}%`),
                 short_description: Like(`%${search?.short_description || ''}%`),
