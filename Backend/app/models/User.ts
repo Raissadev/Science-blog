@@ -39,6 +39,12 @@ class User {
     {
         this.password = bycript.hashSync(this.password, 8);
     }
+
+    toJSON(): any
+    {
+        delete this.password;
+        return this;
+    }
 }
 
 export default User;
