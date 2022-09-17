@@ -10,17 +10,17 @@ function BannerComponent(): any
     return(
         <>
             <Layout className="banner">
-                <Row align="middle" justify-content="center">
+                <Row align="middle" justify="center">
                     <Title level={4}>
                         Search Article <br /> <span> "Blog" </span>
                     </Title>
                 </Row>
-                <Row align="middle" justify-content="center">
+                <Row align="middle" justify="center">
                     <Paragraph>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br /> Mauris blandit enim nec varius consectetur.
                     </Paragraph>
                 </Row>
-                <Row align="middle" justify-content="center">
+                <Row align="middle" justify="center">
                     <Space direction="vertical">
                         <Search placeholder="input search text" onSearch={onSearch} enterButton />
                     </Space>

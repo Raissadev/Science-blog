@@ -7,7 +7,7 @@ function BoxArticleInit(): any
     return(
         <>
             <Layout className="box-article-init box">
-                <Row align="top" justify-content="space-between">
+                <Row align="top" justify="space-between">
                     <Col>
                         <Image
                             src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
