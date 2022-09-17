@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import { Layout, Button, Form, Input, notification } from 'antd';
+import { Layout, Button, Form, Input, notification, Typography } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import "../styles/login.less";
 
 import { api } from "../services/api";
 import { UserProperty, UserPattern } from "../@types/user";
+
+const { Link } = Typography;
 
 function Login(): any
 {
@@ -30,8 +33,8 @@ function Login(): any
 
     return(
         <>
-            <Layout>
-            <Form
+            <Layout className="box-signin">
+                <Form
                     name="basic"
                     labelCol={{ span: 8 }}
                     wrapperCol={{ span: 16 }}
@@ -42,11 +45,10 @@ function Login(): any
                 >
                     <Form.Item
                         name="email"
-                        rules={[{ required: true, message: 'Please input your email!' }]}
+                        rules={[{ type: 'email', required: true, message: 'Please input your email!' }]}
                     >
                         <Input
                             placeholder="E-mail"
-                            className="mb-1"
                             onChange={(val: any) => setUser({ ...user, email: val.target.value })}
                         />
                     </Form.Item>
@@ -61,6 +63,9 @@ function Login(): any
                         />
                     </Form.Item>
                     <Form.Item>
+                        <Link href="/sign-up">
+                            Don't have an account yet?
+                        </Link>
                         <Button type="primary" htmlType="submit">
                             Sign In
                         </Button>

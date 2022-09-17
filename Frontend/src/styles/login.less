@@ -1,0 +1,54 @@
+section.ant-layout.box-signin {
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../assets/images/log.jpg');
+    background-size: cover;
+
+    & .ant-form {
+        width: 40%;
+        padding: 4rem;
+        background: rgba( 255, 255, 255, 0.5 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 9.5px );
+        -webkit-backdrop-filter: blur( 9.5px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+        & .ant-col-16 {
+            width: 100% !important;
+            max-width: unset !important;
+        }
+
+        & input.ant-input {
+            width: 100% !important;
+        }
+
+        & .ant-btn {
+            padding: 1.3rem 2rem;
+        }
+
+        & .ant-form-item-explain-error {
+            margin: 0.2rem 0 0.8rem 0;
+        }
+
+        & .ant-form-item {
+            &:last-child {
+                padding-top: 1rem !important;
+                display: flex;
+                justify-content: center;
+
+                & .ant-row.ant-form-item-row {
+                    width: 100% !important;
+                }
+
+                & .ant-form-item-control-input-content {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}

@@ -5,6 +5,7 @@ import Head from "../components/Header";
 import Foot from "../components/Footer";
 import Home from "../views/Home";
 import Login from "../views/Login";
+import Register from "../views/Register";
 
 function Main(): any
 {
@@ -14,6 +15,7 @@ function Main(): any
             <Routes>
                 <Route path="/" element={ <Home /> } /> 
                 <Route path="/login" element={ <Login /> } /> 
+                <Route path="/sign-up" element={ <Register /> } /> 
                 <Route path="*" element={ <Home /> } /> 
             </Routes>
             <Foot />
