@@ -4,6 +4,7 @@
 
 This blog is still under development!
 I present a project scope for science articles, it can now be used in production! But there are some details that need to be put up front.
+I interrupted the project for getting a little "fed up" rs, but then I'll resume development! ☺️
 
 - Obs: I recommend using docker for testing!
 
