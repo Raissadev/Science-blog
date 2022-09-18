@@ -1,10 +1,25 @@
+import { useMemo, useState } from 'react';
 import { Row, Layout, Menu, Typography, Button } from 'antd';
+import { AllCategoriesPattern, AllCategoriesProperty } from '../@types/all-categories';
+import { api } from '../services/api';
 
 const { Header } = Layout;
 const { Title } = Typography;
 
 function Head(): any
 {
+    const [categories, setCategories] = useState<AllCategoriesProperty>(AllCategoriesPattern);
+
+    useMemo(async () => {
+        const allCategories: any = await api.get("/categories");
+
+        setCategories({
+            data: allCategories?.data.data,
+            inquiry: 0,
+        });
+
+    }, [categories?.inquiry]);
+
     return(
         <>
             <Header>
@@ -14,19 +29,30 @@ function Head(): any
                             <Title level={4}>Science Blog</Title>
                         </Menu.Item>
                         <Menu.Item key="home">
-                            <a href="/home">Home</a>
+                            <a href="/">Home</a>
                         </Menu.Item>
                         <Menu.Item key="contact">
-                            <a href="/">Contact</a>
+                            <a href="https://raissadev.herokuapp.com">Contact</a>
                         </Menu.Item>
-                        <Menu.Item key="List">
-                            <a href="/">List</a>
+                        <Menu.Item key="github">
+                            <a href="https://github.com/Raissadev">GitHub</a>
                         </Menu.Item>
+                        <Menu.SubMenu title="Categories">
+                            {categories?.data.map((data: any) => {
+                                return (
+                                    <Menu.Item
+                                        key={"category-default-" + data?.id}
+                                    >
+                                        { data.name }
+                                    </Menu.Item>
+                                );
+                            })}
+                        </Menu.SubMenu>
                         <Menu.Item key="repository">
-                            <a href="/">Repository</a>
+                            <a href="https://github.com/Raissadev/Science-Blog">Repository</a>
                         </Menu.Item>
                         <Menu.Item key="about">
-                            <a href="/">About</a>
+                            <a href="https://raissadev.herokuapp.com">About</a>
                         </Menu.Item>
                         <Menu.Item key="login" className="button-menu">
                             <Button type="primary" size="large" href="/">

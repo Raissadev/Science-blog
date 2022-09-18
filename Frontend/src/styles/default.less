@@ -92,6 +92,8 @@ section.banner {
         }
 
         &:last-child {
+            position: relative !important;
+
             & span.ant-input-wrapper.ant-input-group {
                 & .ant-input {
                     border-radius: 15px 0 0 15px !important;
@@ -105,6 +107,12 @@ section.banner {
                 & .ant-btn .anticon {
                     color: @white !important;
                 }
+            }
+
+            & .ant-space-item:last-child {
+                width: 100%;
+                position: absolute !important;
+                top: 110%;
             }
         }
     }

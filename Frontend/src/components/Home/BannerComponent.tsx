@@ -1,11 +1,28 @@
-import { Row, Layout, Typography, Input, Space } from 'antd';
+import { useState } from 'react';
+import { Row, Layout, Typography, Input, Space, Menu } from 'antd';
+
+import { AllArticlesProperty, AllArticlesPattern } from '../../@types/all-articles';
+import { api } from '../../services/api';
 
 const { Title, Paragraph } = Typography;
 const { Search } = Input;
 
 function BannerComponent(): any
 {
-    const onSearch = (value: string) => console.log(value);
+    const [visible, setVisible] = useState<boolean>(false);
+    const [articles, setArticles] = useState<AllArticlesProperty>(AllArticlesPattern);
+
+    const onSearch = async (value: string) => {
+        const data = new URLSearchParams({ title: value });
+        const allArticles: any = await api.get("/posts?" + data);
+
+        setArticles({
+            data: allArticles?.data.data,
+            inquiry: 0,
+        });
+
+        setVisible(true);
+    }
 
     return(
         <>
@@ -22,7 +39,21 @@ function BannerComponent(): any
                 </Row>
                 <Row align="middle" justify="center">
                     <Space direction="vertical">
-                        <Search placeholder="input search text" onSearch={onSearch} enterButton />
+                        <Search
+                            onClick={() => setVisible(!visible)}
+                            placeholder="input search text"
+                            onSearch={onSearch}
+                            enterButton
+                        />
+                        <Menu mode="vertical" style={{ display: visible ? 'block' : 'none'  }}>
+                            {articles?.data.map((data: any) => {
+                                return (
+                                    <Menu.Item key="home-search">
+                                        <a href="/">{ data.title || '...' }</a>
+                                    </Menu.Item>
+                                );
+                            })}
+                        </Menu>
                     </Space>
                 </Row>
             </Layout>

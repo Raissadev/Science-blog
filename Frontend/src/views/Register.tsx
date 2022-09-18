@@ -18,11 +18,6 @@ function Register(): any
 
     const signUp = async () => {
         const data = await readForm(user);
-        // const data = new FormData();
-        // data.append('name', user.name);
-        // data.append('email', user.email);
-        // data.append('password', user.password);
-        // data.append('avatar', user.avatar);
         await api.post("/users", data, {
             headers: { 'Content-Type': 'multipart/form-data;' }
         })
