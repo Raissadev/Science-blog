@@ -26,13 +26,15 @@ class UserController
         const { name, email, password } = req.body;
         const avatar = req.file;
 
+        console.log(req.body);
+
         if (!avatar) return res.status(409).json({ message: "Invalid file!" })
 
         const user = await UserRepository.create(
             { name, avatar: avatar.path, email, password, type: TypeUser.User }, {}
         );
 
-        if (user)
+        if (!user)
             return res.status(409).json({ message: "email exists!" });
 
         return res.json({

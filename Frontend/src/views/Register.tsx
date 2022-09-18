@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Layout, Button, Form, Input, notification, Typography, Upload, Row } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import readForm from '../utils/read-form';
 import "../styles/login.less";
@@ -17,9 +17,14 @@ function Register(): any
     const navigate: any = useNavigate();
 
     const signUp = async () => {
-        const data = readForm(user);
+        // const data = readForm(user);
+        const data = new FormData();
+        data.append('name', user.name);
+        data.append('email', user.email);
+        data.append('password', user.password);
+        data.append('avatar', user.avatar);
         await api.post("/users", data, {
-            headers: { 'Content-Type': 'multipart/form-data' }
+            headers: { 'Content-Type': 'multipart/form-data;' }
         })
         .then( (response: any) => {
             navigate("/");
@@ -69,9 +74,10 @@ function Register(): any
                             name="password"
                             rules={[{ required: true, message: 'Please input your password!' }]}
                         >
-                            <Input
+                            <Input.Password
                                 placeholder="Senha"
                                 type="password"
+                                iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
                                 onChange={(val: any) => setUser({ ...user, password: val.target.value })}
                             />
                         </Form.Item>

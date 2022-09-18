@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Layout, Button, Form, Input, notification, Typography } from 'antd';
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import "../styles/login.less";
 
@@ -56,9 +57,10 @@ function Login(): any
                         name="password"
                         rules={[{ required: true, message: 'Please input your password!' }]}
                     >
-                        <Input
+                        <Input.Password
                             placeholder="Senha"
                             type="password"
+                            iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
                             onChange={(val: any) => setUser({ ...user, password: val.target.value })}
                         />
                     </Form.Item>
