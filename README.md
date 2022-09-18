@@ -7,6 +7,7 @@ I present a project scope for science articles, it can now be used in production
 
 - Obs: I recommend using docker for testing!
 
+
 ## Top application
 Build
 ```
@@ -17,5 +18,5 @@ $ docker-compose up -d --build
 Raissa Daros - raissa.fullstack@gmail.com - https://github.com/Raissadev/
 
 ## License
-This component is licensed under the MIT License.
+This component is licensed under the GPL-3 License.
 
