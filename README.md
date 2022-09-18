@@ -15,7 +15,7 @@ $ docker-compose up -d --build
 ```
 
 ## Author
-Raissa Daros - raissa.fullstack@gmail.com - https://github.com/Raissadev/
+Raissa Daros - raissa.fullstack@gmail.com - https://github.com/Raissadev
 
 ## License
 This component is licensed under the GPL-3 License.
