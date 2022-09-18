@@ -17,12 +17,12 @@ function Register(): any
     const navigate: any = useNavigate();
 
     const signUp = async () => {
-        // const data = readForm(user);
-        const data = new FormData();
-        data.append('name', user.name);
-        data.append('email', user.email);
-        data.append('password', user.password);
-        data.append('avatar', user.avatar);
+        const data = await readForm(user);
+        // const data = new FormData();
+        // data.append('name', user.name);
+        // data.append('email', user.email);
+        // data.append('password', user.password);
+        // data.append('avatar', user.avatar);
         await api.post("/users", data, {
             headers: { 'Content-Type': 'multipart/form-data;' }
         })
