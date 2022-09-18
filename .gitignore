@@ -4,7 +4,7 @@
 /Backend/node_modules
 /Backend/log
 /Backend/.env
-# /Backend/public/storage
+/Backend/public/storage
 /Frontend/npm-debug.log*
 /Frontend/yarn-debug.log*
 /Frontend/yarn-error.log*
