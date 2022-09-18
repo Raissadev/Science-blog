@@ -11,6 +11,7 @@ RUN yarn --cwd ./Backend install && \
     yarn --cwd ./Backend typeorm:run && \
     yarn --cwd ./Frontend install && \
     yarn --cwd ./Frontend compiler && \
+    yarn global add serve && \
     yarn install && \
     yarn cache clean
 
