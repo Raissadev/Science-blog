@@ -31,11 +31,11 @@ function BoxArticleInit(property: any): any
                         </Paragraph>
                         <Row className="box-article-user">
                             <Image
-                                src={url + "/" + property.article?.owner_id?.avatar }
+                                src={url + "/" + (property.article?.owner_id?.avatar || 'public/storage/root.jpg') }
                                 preview={false}
                             />
                             <Title level={5}>
-                                By: { property.article?.owner_id?.name } <br />
+                                By: { property.article?.owner_id?.name || 'nobody' } <br />
                                 <span>Just now</span>
                             </Title>
                         </Row>

@@ -55,7 +55,7 @@ function Head(): any
                             <a href="https://raissadev.herokuapp.com">About</a>
                         </Menu.Item>
                         <Menu.Item key="login" className="button-menu">
-                            <Button type="primary" size="large" href="/">
+                            <Button type="primary" size="large" href="/login">
                                 Login
                             </Button>
                         </Menu.Item>

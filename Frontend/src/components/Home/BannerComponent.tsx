@@ -49,7 +49,7 @@ function BannerComponent(): any
                             {articles?.data.map((data: any) => {
                                 return (
                                     <Menu.Item key="home-search">
-                                        <a href="/">{ data.title || '...' }</a>
+                                        <a href={`/article/${data.id}`}>{ data.title || '...' }</a>
                                     </Menu.Item>
                                 );
                             })}

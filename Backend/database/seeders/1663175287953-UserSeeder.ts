@@ -12,6 +12,7 @@ export class UserSeeder1663175287953 implements MigrationInterface {
             email: env.EMAIL_USER_ROOT,
             password: env.PASS_USER_ROOT,
             type: TypeUser.Root,
+            avatar: env.AVATAR_USER_ROOT,
         });
     }
 
