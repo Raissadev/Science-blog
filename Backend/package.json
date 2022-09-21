@@ -12,7 +12,7 @@
     "typeorm:run": "typeorm-ts-node-esm migration:run -d ./config/data-source.ts ",
     "db:seed": "ts-node ./node_modules/typeorm/cli.js migration:run -d ./app/config/data-source.ts",
     "build": "genversion -e app/version.ts && tsc",
-    "build:linux": "genversion -e app/version.ts && pkg -t linux dist/server.js -o bin/Hurra_Backend"
+    "build:linux": "genversion -e app/version.ts && pkg -t linux dist/server.js -o bin/blog"
   },
   "dependencies": {
     "axios": "^0.27.2",
